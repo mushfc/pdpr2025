@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="ms">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jom Bermain Sambil Belajar</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .decorative-elements {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      font-size: 24px;
+      animation: twinkle 3s infinite;
+    }
+
+    .star:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .star:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+    .star:nth-child(3) { top: 70%; left: 20%; animation-delay: 1s; }
+    .star:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 1.5s; }
+    .star:nth-child(5) { top: 50%; left: 5%; animation-delay: 2s; }
+    .star:nth-child(6) { top: 30%; right: 5%; animation-delay: 2.5s; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .education-icon {
+      position: absolute;
+      font-size: 35px;
+      opacity: 0.25;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    .education-icon:nth-child(7) { top: 15%; left: 80%; animation-delay: 0s; }
+    .education-icon:nth-child(8) { bottom: 20%; left: 15%; animation-delay: 2s; }
+    .education-icon:nth-child(9) { top: 60%; right: 8%; animation-delay: 1s; }
+    .education-icon:nth-child(10) { top: 40%; left: 12%; animation-delay: 3s; }
+    .education-icon:nth-child(11) { bottom: 40%; right: 20%; animation-delay: 4s; }
+    .education-icon:nth-child(12) { top: 25%; left: 75%; animation-delay: 1.5s; }
+    .education-icon:nth-child(13) { top: 80%; right: 25%; animation-delay: 2.5s; }
+    .education-icon:nth-child(14) { top: 35%; right: 85%; animation-delay: 3.5s; }
+    .education-icon:nth-child(15) { bottom: 60%; left: 8%; animation-delay: 0.5s; }
+    .education-icon:nth-child(16) { top: 65%; left: 85%; animation-delay: 4.5s; }
+    .education-icon:nth-child(17) { bottom: 10%; right: 40%; animation-delay: 1.8s; }
+    .education-icon:nth-child(18) { top: 5%; left: 40%; animation-delay: 3.2s; }
+    .education-icon:nth-child(19) { top: 45%; left: 90%; animation-delay: 2.8s; }
+    .education-icon:nth-child(20) { bottom: 35%; left: 3%; animation-delay: 4.2s; }
+    .education-icon:nth-child(21) { top: 12%; right: 45%; animation-delay: 1.2s; }
+    .education-icon:nth-child(22) { bottom: 25%; right: 60%; animation-delay: 3.8s; }
+    .education-icon:nth-child(23) { top: 75%; left: 60%; animation-delay: 0.8s; }
+    .education-icon:nth-child(24) { top: 55%; right: 50%; animation-delay: 5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .bounce-icon {
+      animation: bounceFloat 3s infinite ease-in-out;
+    }
+
+    @keyframes bounceFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-15px) scale(1.05); }
+    }
+
+    .wiggle-icon {
+      animation: wiggle 4s infinite ease-in-out;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg) translateX(0px); }
+      25% { transform: rotate(5deg) translateX(2px); }
+      75% { transform: rotate(-5deg) translateX(-2px); }
+    }
+
+    .rotating-icon {
+      animation: rotate 8s infinite linear;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .pulse-icon {
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.1); }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 50px 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-icon {
+      font-size: 80px;
+      animation: bounce 2s infinite;
+    }
+
+    .education-graphics {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .education-svg {
+      animation: float 4s infinite ease-in-out;
+    }
+
+    .education-svg:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .education-svg:nth-child(3) {
+      animation: rotate 6s infinite linear;
+      animation-delay: 0.5s;
+    }
+
+    .education-svg:nth-child(4) {
+      animation: pulse 3s infinite ease-in-out;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: #667eea;
+      margin: 20px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #764ba2;
+      margin: 10px 0 40px 0;
+      font-weight: 500;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .attendance-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px;
+      border: 2px solid rgba(240, 147, 251, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .attendance-instruction {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      background: rgba(240, 147, 251, 0.1);
+      padding: 15px 20px;
+      border-radius: 15px;
+      border-left: 4px solid #f093fb;
+    }
+
+    .instruction-icon {
+      font-size: 32px;
+      animation: bounce 2s infinite;
+    }
+
+    .instruction-text {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .schedule-container {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .schedule-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .schedule-icon {
+      font-size: 24px;
+      animation: pulse 2s infinite;
+    }
+
+    .schedule-header h4 {
+      margin: 0;
+      color: #667eea;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .class-schedules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .class-card {
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 12px;
+      padding: 15px;
+      border: 1px solid rgba(102, 126, 234, 0.2);
+    }
+
+    .class-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      justify-content: center;
+    }
+
+    .class-emoji {
+      font-size: 20px;
+      animation: wiggle 3s infinite ease-in-out;
+    }
+
+    .class-header h5 {
+      margin: 0;
+      color: #764ba2;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .schedule-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .day-icon {
+      font-size: 16px;
+    }
+
+    .day {
+      font-weight: 600;
+      color: #667eea;
+      min-width: 50px;
+    }
+
+    .time {
+      color: #764ba2;
+      font-weight: 500;
+      margin-left: auto;
+    }
+
+    .game-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px;
+      border: 2px dashed rgba(102, 126, 234, 0.3);
+    }
+
+    .game-category {
+      font-size: 20px;
+      color: #667eea;
+      margin: 0 0 20px 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .game-buttons-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .game-button {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 30px;
+      min-height: 80px;
+    }
+
+    .button-title {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .button-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      opacity: 0.85;
+      line-height: 1.1;
+    }
+
+    .main-button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 25px 50px;
+      font-size: 28px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .main-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
+    }
+
+    .main-button:active {
+      transform: translateY(-1px);
+    }
+
+    .main-button:first-child {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      box-shadow: 0 8px 20px rgba(240, 147, 251, 0.4);
+    }
+
+    .main-button:first-child:hover {
+      box-shadow: 0 12px 30px rgba(240, 147, 251, 0.6);
+    }
+
+
+
+    .attendance-form {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+      padding-bottom: 20px;
+    }
+
+    .form-title {
+      font-size: 28px;
+      color: #667eea;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .close-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      background: #c82333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    }
+
+    .submit-btn:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+      color: #667eea;
+    }
+
+    .success-message {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 1px solid #c3e6cb;
+    }
+
+    .error-message {
+      display: none;
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 1px solid #f5c6cb;
+    }
+
+
+
+    .developer-info {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid rgba(102, 126, 234, 0.2);
+      font-size: 12px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .main-button {
+        font-size: 22px;
+        padding: 20px 40px;
+      }
+
+      .header-icon {
+        font-size: 60px;
+      }
+
+      .class-schedules {
+        grid-template-columns: 1fr;
+      }
+
+      .attendance-instruction {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .instruction-text {
+        font-size: 14px;
+      }
+
+      .schedule-item {
+        font-size: 12px;
+      }
+
+      .day {
+        min-width: 40px;
+      }
+
+      .button-title {
+        font-size: 20px;
+      }
+
+      .button-subtitle {
+        font-size: 12px;
+      }
+
+      .game-button {
+        padding: 15px 20px;
+        min-height: 70px;
+      }
+
+
+
+      .form-container {
+        padding: 15px;
+        margin: 10px;
+      }
+
+      .form-title {
+        font-size: 22px;
+      }
+
+
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="decorative-elements">
+   <div class="star">
+    ⭐
+   </div>
+   <div class="star">
+    ✨
+   </div>
+   <div class="star">
+    ⭐
+   </div>
+   <div class="star">
+    ✨
+   </div>
+   <div class="star">
+    ⭐
+   </div>
+   <div class="star">
+    ✨
+   </div>
+   <div class="education-icon">
+    📚
+   </div>
+   <div class="education-icon">
+    📖
+   </div>
+   <div class="education-icon rotating-icon">
+    🎯
+   </div>
+   <div class="education-icon pulse-icon">
+    🧠
+   </div>
+   <div class="education-icon">
+    ✏️
+   </div>
+   <div class="education-icon rotating-icon">
+    🔬
+   </div>
+   <div class="education-icon pulse-icon">
+    🎨
+   </div>
+   <div class="education-icon">
+    📐
+   </div>
+   <div class="education-icon rotating-icon">
+    🌟
+   </div>
+   <div class="education-icon">
+    🔍
+   </div>
+   <div class="education-icon pulse-icon">
+    💡
+   </div>
+   <div class="education-icon">
+    🏆
+   </div>
+   <div class="education-icon bounce-icon">
+    🚀
+   </div>
+   <div class="education-icon wiggle-icon">
+    🎪
+   </div>
+   <div class="education-icon pulse-icon">
+    ⚡
+   </div>
+   <div class="education-icon rotating-icon">
+    🎭
+   </div>
+   <div class="education-icon bounce-icon">
+    🎮
+   </div>
+   <div class="education-icon wiggle-icon">
+    🎊
+   </div>
+  </div>
+  <div class="container">
+   <div class="content">
+    <div class="header-section">
+     <div class="header-icon">
+      🎓
+     </div>
+     <div class="education-graphics">
+      <svg width="60" height="60" viewbox="0 0 100 100" class="education-svg"><circle cx="50" cy="50" r="45" fill="none" stroke="#667eea" stroke-width="3" opacity="0.6" /> <path d="M30 50 L45 65 L70 35" stroke="#f093fb" stroke-width="4" fill="none" stroke-linecap="round" />
+      </svg>
+      <svg width="60" height="60" viewbox="0 0 100 100" class="education-svg"><rect x="20" y="30" width="60" height="40" rx="5" fill="#764ba2" opacity="0.7" /> <circle cx="35" cy="45" r="8" fill="#f093fb" /> <circle cx="50" cy="45" r="8" fill="#667eea" /> <circle cx="65" cy="45" r="8" fill="#f093fb" />
+      </svg>
+      <svg width="60" height="60" viewbox="0 0 100 100" class="education-svg"><polygon points="50,10 65,35 90,35 70,55 80,85 50,70 20,85 30,55 10,35 35,35" fill="#f093fb" opacity="0.8" /> <circle cx="50" cy="50" r="15" fill="#667eea" opacity="0.9" />
+      </svg>
+      <svg width="60" height="60" viewbox="0 0 100 100" class="education-svg"><path d="M20 80 Q50 20 80 80" stroke="#764ba2" stroke-width="6" fill="none" opacity="0.7" /> <circle cx="20" cy="80" r="6" fill="#f093fb" /> <circle cx="50" cy="50" r="8" fill="#667eea" /> <circle cx="80" cy="80" r="6" fill="#f093fb" />
+      </svg>
+     </div>
+    </div>
+    <h1 id="main-title">JOM BELAJAR<br>
+     SAMBIL BERMAIN</h1>
+    <h2 id="subtitle">Kelas Cikgu Mush PdPR 2025</h2>
+    <div class="button-container">
+     <div class="attendance-section">
+      <div class="attendance-instruction">
+       <div class="instruction-icon">
+        📋
+       </div>
+       <p class="instruction-text">Sila isi <strong>DAFTAR KEHADIRAN</strong> mengikut hari jadual kelas <strong>MATEMATIK</strong> anda</p>
+      </div>
+      <div class="schedule-container">
+       <div class="schedule-header"><span class="schedule-icon">📅</span>
+        <h4>Jadual Kelas Matematik</h4>
+       </div>
+       <div class="class-schedules">
+        <div class="class-card">
+         <div class="class-header"><span class="class-emoji">🎯</span>
+          <h5>Kelas 3C</h5>
+         </div>
+         <div class="schedule-list">
+          <div class="schedule-item"><span class="day-icon">📘</span> <span class="day">Selasa</span> <span class="time">08:10 - 09:10</span>
+          </div>
+          <div class="schedule-item"><span class="day-icon">📗</span> <span class="day">Rabu</span> <span class="time">07:10 - 08:10</span>
+          </div>
+          <div class="schedule-item"><span class="day-icon">📙</span> <span class="day">Jumaat</span> <span class="time">08:10 - 09:10</span>
+          </div>
+         </div>
+        </div>
+        <div class="class-card">
+         <div class="class-header"><span class="class-emoji">🎪</span>
+          <h5>Kelas 3J</h5>
+         </div>
+         <div class="schedule-list">
+          <div class="schedule-item"><span class="day-icon">📘</span> <span class="day">Selasa</span> <span class="time">10:40 - 11:40</span>
+          </div>
+          <div class="schedule-item"><span class="day-icon">📗</span> <span class="day">Rabu</span> <span class="time">10:40 - 11:40</span>
+          </div>
+          <div class="schedule-item"><span class="day-icon">📕</span> <span class="day">Khamis</span> <span class="time">09:40 - 10:40</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><button class="main-button" id="btn-attendance">DAFTAR KEHADIRAN</button>
+     </div>
+     <div class="game-section">
+      <h3 class="game-category">Sila Pilih Permainan</h3>
+      <div class="game-buttons-grid"><button class="main-button game-button" id="btn-start">
+        <div class="button-title">
+         KODEX
+        </div>
+        <div class="button-subtitle">
+         (Nombor Nisbah)
+        </div></button> <button class="main-button game-button" id="btn-dekod">
+        <div class="button-title">
+         DE:KOD
+        </div>
+        <div class="button-subtitle">
+         (Pola dan Jujukan)
+        </div></button> <button class="main-button game-button" id="btn-arkitek">
+        <div class="button-title">
+         ARKITEK HARMONIA
+        </div>
+        <div class="button-subtitle">
+         (Nisbah, Kadar, dan Kadaran)
+        </div>
+        <div class="button-subtitle">
+         pautan akan dikemaskini
+        </div></button>
+      </div>
+     </div>
+    </div>
+    <div class="developer-info">
+     <div id="dev-line1">
+      Dibangunkan oleh
+     </div>
+     <div id="dev-line2">
+      <strong>Cikgu Mush</strong>
+     </div>
+     <div id="dev-line3">
+      SMK Wira Penrissen
+     </div>
+     <div id="dev-line4">
+      PPD Samarahan
+     </div>
+    </div>
+   </div>
+  </div><!-- Attendance Form -->
+  <div class="attendance-form" id="attendance-form">
+   <div class="form-container">
+    <div class="form-header">
+     <h1 class="form-title">📋 Daftar Kehadiran</h1><button class="close-btn" id="close-form">✕ Tutup</button>
+    </div>
+    <form id="attendance-form-element">
+     <div class="form-group"><label for="student-name">Nama Penuh:</label> <input type="text" id="student-name" name="nama" required placeholder="Masukkan nama penuh anda">
+     </div>
+     <div class="form-group"><label for="student-class">Kelas:</label> <select id="student-class" name="kelas" required> <option value="">Pilih kelas anda</option> <option value="3C">3C</option> <option value="3J">3J</option> </select>
+     </div>
+     <div class="form-group"><label for="class-day">Hari:</label> <select id="class-day" name="hari" required> <option value="">Pilih hari kelas</option> <option value="Selasa">Selasa</option> <option value="Rabu">Rabu</option> <option value="Khamis">Khamis</option> <option value="Jumaat">Jumaat</option> </select>
+     </div>
+     <div class="form-group"><label for="class-date">Tarikh:</label> <input type="date" id="class-date" name="tarikh" required>
+     </div>
+     <div class="form-group"><label for="class-time">Masa Kelas:</label> <select id="class-time" name="masa" required> <option value="">Pilih masa kelas</option> <option value="07:10 - 08:10">07:10 - 08:10</option> <option value="08:10 - 09:10">08:10 - 09:10</option> <option value="09:40 - 10:40">09:40 - 10:40</option> <option value="10:40 - 11:40">10:40 - 11:40</option> </select>
+     </div>
+     <div class="form-group"><label for="attendance-status">Status Kehadiran:</label> <select id="attendance-status" name="status" required> <option value="">Pilih status</option> <option value="Hadir">Hadir</option> <option value="Tidak Hadir">Tidak Hadir</option> </select>
+     </div>
+     <div class="loading" id="loading">
+      <div>
+       ⏳ Menyimpan data kehadiran...
+      </div>
+     </div>
+     <div class="success-message" id="success-message">
+      ✅ Kehadiran berjaya direkodkan! Terima kasih.
+     </div>
+     <div class="error-message" id="error-message">
+      ❌ Ralat berlaku. Sila cuba lagi.
+     </div><button type="submit" class="submit-btn" id="submit-btn"> 📝 Hantar Kehadiran </button>
+    </form>
+   </div>
+  </div>
+  <script>
+    let attendanceData = [];
+    let isDataLoaded = false;
+
+    const defaultConfig = {
+      main_title: "JOM BELAJAR\nSAMBIL BERMAIN",
+      subtitle: "Kelas Cikgu Mush PdPR 2025",
+      button_attendance: "DAFTAR KEHADIRAN",
+      button_start: "KODEX NISBAH",
+      developer_line1: "Dibangunkan oleh",
+      developer_line2: "Cikgu Mush",
+      developer_line3: "SMK Wira Penrissen",
+      developer_line4: "PPD Samarahan",
+      primary_color: "#667eea",
+      secondary_color: "#764ba2",
+      accent_color: "#f093fb",
+      text_color: "#333333",
+      button_text_color: "#ffffff",
+      font_family: "Segoe UI",
+      font_size: 16
+    };
+
+    // Data handler for the Data SDK
+    const dataHandler = {
+      onDataChanged(data) {
+        attendanceData = data;
+        isDataLoaded = true;
+      }
+    };
+
+
+
+    async function onConfigChange(config) {
+      const mainTitle = config.main_title || defaultConfig.main_title;
+      const subtitle = config.subtitle || defaultConfig.subtitle;
+      const buttonAttendance = config.button_attendance || defaultConfig.button_attendance;
+      const buttonStart = config.button_start || defaultConfig.button_start;
+      const devLine1 = config.developer_line1 || defaultConfig.developer_line1;
+      const devLine2 = config.developer_line2 || defaultConfig.developer_line2;
+      const devLine3 = config.developer_line3 || defaultConfig.developer_line3;
+      const devLine4 = config.developer_line4 || defaultConfig.developer_line4;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const buttonTextColor = config.button_text_color || defaultConfig.button_text_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      document.getElementById('main-title').innerHTML = mainTitle.replace(/\n/g, '<br>');
+      document.getElementById('subtitle').textContent = subtitle;
+      document.getElementById('btn-attendance').textContent = buttonAttendance;
+      // Update button structure for btn-start
+      const btnStart = document.getElementById('btn-start');
+      btnStart.innerHTML = `
+        <div class="button-title">KODEX</div>
+        <div class="button-subtitle">(Nombor Nisbah)</div>
+      `;
+      document.getElementById('dev-line1').textContent = devLine1;
+      document.getElementById('dev-line2').innerHTML = `<strong>${devLine2}</strong>`;
+      document.getElementById('dev-line3').textContent = devLine3;
+      document.getElementById('dev-line4').textContent = devLine4;
+
+      document.body.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 50%, ${accentColor} 100%)`;
+      document.getElementById('main-title').style.color = primaryColor;
+      document.getElementById('subtitle').style.color = secondaryColor;
+      
+      const buttons = document.querySelectorAll('.main-button');
+      buttons[0].style.background = `linear-gradient(135deg, ${accentColor} 0%, #f5576c 100%)`;
+      buttons[0].style.color = buttonTextColor;
+      buttons[1].style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+      buttons[1].style.color = buttonTextColor;
+
+      document.querySelector('.developer-info').style.color = textColor;
+
+      const baseFontStack = 'Tahoma, Geneva, Verdana, sans-serif';
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      
+      document.getElementById('main-title').style.fontSize = `${fontSize * 3}px`;
+      document.getElementById('subtitle').style.fontSize = `${fontSize * 1.5}px`;
+      document.querySelectorAll('.main-button').forEach(btn => {
+        btn.style.fontSize = `${fontSize * 1.75}px`;
+      });
+      document.querySelector('.developer-info').style.fontSize = `${fontSize * 0.75}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.button_text_color || defaultConfig.button_text_color,
+            set: (value) => {
+              config.button_text_color = value;
+              window.elementSdk.setConfig({ button_text_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["subtitle", config.subtitle || defaultConfig.subtitle],
+        ["button_attendance", config.button_attendance || defaultConfig.button_attendance],
+        ["button_start", config.button_start || defaultConfig.button_start],
+        ["developer_line1", config.developer_line1 || defaultConfig.developer_line1],
+        ["developer_line2", config.developer_line2 || defaultConfig.developer_line2],
+        ["developer_line3", config.developer_line3 || defaultConfig.developer_line3],
+        ["developer_line4", config.developer_line4 || defaultConfig.developer_line4]
+      ]);
+    }
+
+    // Initialize SDKs
+    async function initializeApp() {
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      }
+
+      if (window.dataSdk) {
+        const initResult = await window.dataSdk.init(dataHandler);
+        if (!initResult.isOk) {
+          console.error("Failed to initialize data SDK");
+        }
+      }
+    }
+
+    // Initialize when page loads
+    initializeApp();
+
+    // Set today's date as default
+    document.getElementById('class-date').valueAsDate = new Date();
+
+    // Form submission
+    document.getElementById('attendance-form-element').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const loading = document.getElementById('loading');
+      const successMessage = document.getElementById('success-message');
+      const errorMessage = document.getElementById('error-message');
+      
+      // Hide previous messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      // Show loading state
+      loading.style.display = 'block';
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ Menyimpan...';
+      
+      try {
+        const formData = new FormData(this);
+        const attendanceRecord = {
+          nama: formData.get('nama'),
+          kelas: formData.get('kelas'),
+          hari: formData.get('hari'),
+          tarikh: formData.get('tarikh'),
+          masa: formData.get('masa'),
+          status: formData.get('status'),
+          timestamp: new Date().toISOString()
+        };
+
+        if (window.dataSdk) {
+          const result = await window.dataSdk.create(attendanceRecord);
+          
+          if (result.isOk) {
+            successMessage.style.display = 'block';
+            this.reset();
+            document.getElementById('class-date').valueAsDate = new Date();
+          } else {
+            throw new Error('Failed to save attendance record');
+          }
+        } else {
+          throw new Error('Data SDK not available');
+        }
+      } catch (error) {
+        console.error('Error saving attendance:', error);
+        errorMessage.style.display = 'block';
+      } finally {
+        loading.style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.textContent = '📝 Hantar Kehadiran';
+      }
+    });
+
+    // Button event listeners
+    document.getElementById('btn-attendance').addEventListener('click', function() {
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = '';
+        window.open('https://kelascikgumush.com/kehadiran-pdpr-2025', '_blank', 'noopener,noreferrer');
+      }, 100);
+    });
+
+    document.getElementById('btn-start').addEventListener('click', function() {
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = '';
+        window.open('https://kelascikgumush.com/kodex-nisbah', '_blank', 'noopener,noreferrer');
+      }, 100);
+    });
+
+    document.getElementById('btn-dekod').addEventListener('click', function() {
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = '';
+        window.open('https://kelascikgumush.com/agensi-wira-pola', '_blank', 'noopener,noreferrer');
+      }, 100);
+    });
+
+    document.getElementById('btn-arkitek').addEventListener('click', function() {
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 100);
+    });
+
+    document.getElementById('close-form').addEventListener('click', function() {
+      document.getElementById('attendance-form').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close forms when clicking outside
+    document.getElementById('attendance-form').addEventListener('click', function(e) {
+      if (e.target === this) {
+        document.getElementById('attendance-form').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0c3667a485e628',t:'MTc2MzUxODY2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
